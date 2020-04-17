@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../contexts/GlobulState';
+import { GlobalContext, IincomeTransaction } from '../contexts/GlobulState';
 
-export const IncomeTransaction = ({ incomeTransaction }) => {
+export const IncomeTransaction:React.FC<{incomeTransaction:IincomeTransaction}> = ({incomeTransaction }) => {
     const { deleteTransaction } = useContext(GlobalContext);
     return (
         <li className="transaction">

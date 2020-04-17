@@ -1,9 +1,9 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, ReactElement} from 'react'
 import { v4 as uuidv4 } from "uuid";
 import { GlobalContext } from '../contexts/GlobulState';
 
 
-const AddTransaction = () => {
+const AddTransaction = ():ReactElement => {
     const { addIncome, addExpense } = useContext(GlobalContext);
     const [income, setIncome] = useState({
         incomeText: "",
@@ -11,10 +11,10 @@ const AddTransaction = () => {
     });
 
     const { incomeText, incomeAmount } = income;
-    const onChangeIncome = (e) => {
+    const onChangeIncome: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setIncome({ ...income, [e.target.name]: e.target.value });
     };
-    const onSubmitIncome = (e) => {
+    const onSubmitIncome:React.ChangeEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         if (incomeText) {
             const newIncomeTransaction = {
@@ -37,10 +37,10 @@ const AddTransaction = () => {
     });
 
     const { expenseText, expenseAmount } = expense;
-    const onChangeExpense = (e) => {
+    const onChangeExpense:React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setExpense({ ...expense, [e.target.name]: e.target.value });
     };
-    const onSubmitExpense = (e) => {
+    const onSubmitExpense:React.ChangeEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         if (expenseText) {
         

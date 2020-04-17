@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
-const Header = () => {
+const Header = ():ReactElement => {
     return (
         <div className="header">
             <h1>Budget App</h1>

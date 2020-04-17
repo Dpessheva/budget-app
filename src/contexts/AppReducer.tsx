@@ -1,4 +1,28 @@
-export default (state, action) => {
+import { IincomeTransaction, IexpenseTransaction } from "./GlobulState";
+
+type Appstate = {
+  incomeTransactions: IincomeTransaction[];
+  expenseTransactions: IexpenseTransaction[],
+}
+
+type Actions =
+  | {
+    type: "ADD_INCOME";
+    payload: IincomeTransaction,
+    }
+| {
+    type: "ADD_EXPENSE";
+    payload: IexpenseTransaction;
+  }
+  | {
+    type: "DELETE_TRANSACTION";
+    payload: string;
+  };
+
+
+export default (state:Appstate, action:Actions) => {
+
+  
     switch (action.type) {
         case 'ADD_INCOME':
             return {
@@ -14,10 +38,10 @@ export default (state, action) => {
                 return {
                   ...state,
                   incomeTransactions: state.incomeTransactions.filter(
-                    incomeTransaction => incomeTransaction.id !== action.payload
+                    (incomeTransaction) => incomeTransaction.id !== action.payload
                   ),
                   expenseTransactions: state.expenseTransactions.filter(
-                    expenseTransaction => expenseTransaction.id !== action.payload
+                    (expenseTransaction) => expenseTransaction.id !== action.payload
                   )
                 };
         default:

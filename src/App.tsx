@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import './App.css';
 import Header from './components/Header';
 import Balance from './components/Balance';
@@ -7,7 +7,7 @@ import IncomeList from './components/IncomeList';
 import ExpenseList from './components/ExpenseList';
 import { GlobalContextProvider } from './contexts/GlobulState';
 
-const App = () => {
+const App = ():ReactElement => {
     return (
         <GlobalContextProvider>
 
