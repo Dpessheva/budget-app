@@ -1,79 +1,14 @@
-import React, {useState, useContext, ReactElement} from 'react'
-import { v4 as uuidv4 } from "uuid";
-import { GlobalContext } from '../contexts/GlobulState';
+import React, {ReactElement} from 'react';
+import IncomeAddTransaction from './IncomeAddTransaction';
+import ExpenseAddTransaction from './ExpenseAddTransaction';
 
 
 const AddTransaction = ():ReactElement => {
-    const { addIncome, addExpense } = useContext(GlobalContext);
-    const [income, setIncome] = useState({
-        incomeText: "",
-        incomeAmount: 0
-    });
-
-    const { incomeText, incomeAmount } = income;
-    const onChangeIncome: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        setIncome({ ...income, [e.target.name]: e.target.value });
-    };
-    const onSubmitIncome:React.ChangeEventHandler<HTMLFormElement> = (e) => {
-        e.preventDefault();
-        if (incomeText) {
-            const newIncomeTransaction = {
-                id: uuidv4(),
-                incomeText,
-                incomeAmount: incomeAmount * 1,
-            }
-            addIncome(newIncomeTransaction);
-            setIncome({
-                incomeText: '',
-                incomeAmount: 0
-            })
-        }
-        
-    };
-
-    const [expense, setExpense] = useState({
-        expenseText: '',
-        expenseAmount: 0
-    });
-
-    const { expenseText, expenseAmount } = expense;
-    const onChangeExpense:React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        setExpense({ ...expense, [e.target.name]: e.target.value });
-    };
-    const onSubmitExpense:React.ChangeEventHandler<HTMLFormElement> = (e) => {
-        e.preventDefault();
-        if (expenseText) {
-        
-            const newExpenseTransaction = {
-                id: uuidv4(),
-                expenseText,
-                expenseAmount: expenseAmount * 1,
-            }
-            addExpense(newExpenseTransaction);
-            setExpense({
-                expenseText: '',
-                expenseAmount: 0,
-            })
-        }
-    };
-
+   
     return (
-        <div className="form-wrapper">
-            <form onSubmit={onSubmitIncome}>
-                <div className="input-group income">
-                    <input type="text" placeholder="Add income..." name="incomeText" value={incomeText} autoComplete="off" onChange={onChangeIncome} />
-                    <input type="number" placeholder="Amount"  name="incomeAmount" autoComplete="off" value={incomeAmount} onChange={onChangeIncome}/>
-                    <input type="submit" value="submit"/>
-                </div>
-            </form>
-            <form onSubmit={onSubmitExpense}>
-                <div className="input-group expense">
-                    <input type="text" name="expenseText" placeholder="Add Expence..." value={expenseText} autoComplete="off" onChange={onChangeExpense} />
-                    <input type="number" name="expenseAmount" placeholder="Amount" value={expenseAmount} autoComplete="off"  onChange={onChangeExpense}/>
-                    <input type="submit" value="submit"/>
-                </div>
-            </form>
-            
+        <div className="form-wrapper">      
+        <IncomeAddTransaction/>
+        <ExpenseAddTransaction/>    
         </div>
     )
 }
