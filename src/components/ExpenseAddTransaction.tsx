@@ -28,8 +28,8 @@ const ExpenseAddTransaction = () => {
         addExpense(newExpenseTransaction);
       }}
     >
-      {({ dirty, isValid, handleBlur, handleSubmit, handleChange, values }) => (
-        <Form onSubmit={handleSubmit}>
+      {({ dirty, isValid, handleBlur, handleChange, values }) => (
+        <Form>
           <div className="input-group expense">
             <div>
               <Field

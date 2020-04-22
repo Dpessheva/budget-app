@@ -29,8 +29,8 @@ const IncomeAddTransaction = (): ReactElement => {
       validationSchema={inputShema}
       initialValues={initialValues}
     >
-      {({dirty, isValid, handleBlur, errors , values, handleChange, handleSubmit}) => (
-        <Form onSubmit={handleSubmit}>
+      {({dirty, isValid, handleBlur , values, handleChange}) => (
+        <Form>
           <div className="input-group income">
             <div>
               <Field
@@ -62,9 +62,6 @@ const IncomeAddTransaction = (): ReactElement => {
               Subit
             </button>
           </div>
-          
-          <pre>{JSON.stringify(values, null, 2)}</pre>
-          <pre>{JSON.stringify(errors, null, 2)}</pre>
         </Form>
       )}
     </Formik>
